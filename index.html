@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissors</title>
+</head>
+<body>
+    <script>
+        // 1. create computer's choice: Rock, paper or Scissors.
+        // math.random * 3 + if statement?
+
+        function getComputerChoice () {
+            computerChoice = Math.floor(Math.random()*3);
+            
+            if (computerChoice === 1){
+                return "rock";
+            } else if(computerChoice === 2){
+                return "paper";
+            } else{
+                return "scissors";
+            }
+
+            return computerChoice;
+        }
+        //getComputerChoice();
+
+        //play a single round of RockPaperScissors
+
+        function playRound(playerSelection, computerSelection){
+            if(playerSelection === computerSelection){
+                return `It's a tie! you both choose ${computerSelection}!`;
+            } else if(playerSelection == "rock" && computerSelection == "paper"){
+                return `You lose, you choose ${playerSelection} and the computer choose ${computerSelection}, Paper beats Rock!`;
+            } else if(playerSelection == "rock" && computerSelection == "scissors"){
+                return `You win, you choose ${playerSelection} and the computer choose ${computerSelection}, Rock beats Scissors!`;
+            } else if(playerSelection == "paper" && computerSelection == "rock"){
+                return `You win, you choose ${playerSelection} and the computer choose ${computerSelection}, Paper beats Rock!`;
+            } else if(playerSelection == "paper" && computerSelection == "scissors"){
+                return `You lose, you choose ${playerSelection} and the computer choose ${computerSelection}, Scissors beats paper!`;
+            } else if(playerSelection == "scissors" && computerSelection == "rock"){
+                return `You lose, you choose ${playerSelection} and the computer choose ${computerSelection}, Rock beats Scissors`;
+            } else if(playerSelection == "scissors" && computerSelection == "paper"){
+                return `You win, you choose ${playerSelection} and the computer choose ${computerSelection}, Scissors beat Paper!`;
+            }
+            
+        }
+        const playerSelection = "rock";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        
+        
+
+    </script>
+</body>
+</html>
