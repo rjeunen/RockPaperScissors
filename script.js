@@ -1,6 +1,6 @@
 //creating a function to make the computer create a choice.
 function getComputerChoice(){
-    let computerChoice = Math.floor(Math.random() * 3);
+    const computerChoice = Math.floor(Math.random() * 3);
 
     if(computerChoice === 1){
         return "rock";
@@ -12,6 +12,12 @@ function getComputerChoice(){
 }
 //Checking if function getComputerChoice works.
 //console.log(getComputerChoice());
+
+//adding a function to get a choice from the player
+function getPlayerChoice(){
+    const playerSelection = prompt("Enter your choice: Rock, Paper or Scissors?: ");
+    return playerSelection;
+}
 
 //adding a function to play a single round.
 function playRound(playerSelection, computerSelection){
@@ -34,10 +40,50 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-//testing function playRound
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playerSelection);
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+//adding a function to play a game. A game is 5 rounds.
+function playGame(){
+    //variables to keep the score
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieScore = 0;
 
+    const playerSelection = getPlayerChoice();
+    const computerSelection = getComputerChoice();
+    const resultRound = playRound(playerSelection, computerSelection);
+    console.log(resultRound);
+
+    
+    //loop to play 5 rounds
+    for(i = 0; i < 5; i++){
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        //result Round bevat de winnaar van 1 rond - is eigenlijk de functiecall playRound
+        const resultRound = playRound(playerSelection, computerSelection);
+        console.log(resultRound);
+
+        //count winning rounds
+        if(resultRound.includes("win")){
+            playerScore++;
+        } else if(resultRound.includes("lose")){
+            computerScore++;
+        } else{
+            tieScore++;
+        }
+    }
+    console.log(`the score is: Player ${playerScore} VS computer ${computerScore} and the game had ${tieScore} tie rounds`);
+    
+
+    /*
+    Hieronder de uitleg zonder loop.
+    Zou je geen loop willen of kunnen gebruiken is het letterlijk de code herhalen.
+    spelerkeuze
+    computerkeuze
+    1ronde
+    de als statement om de punten te tellen
+    REPEAT voor het aantal rondes dat je wilt spelen.
+    */
+
+}
+
+//call function play a game
+playGame();
